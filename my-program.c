@@ -109,8 +109,8 @@ int getToken(){
         unGetCh();
         resultValue = reserve();
     }
-    else if(isalnum(c)){
-        while(isalnum(c)){
+    else if(isdigit(c)){
+        while(isdigit(c)){
             cat();
             getChar();
         }
@@ -155,15 +155,11 @@ int main(int argc,char** argv){
     init();
     file = fopen(argv[1],"rt");
     //file = fopen("test.txt","rt");
-
-    while((c = fgetc(file))!=EOF){
-        printf("%c",c);
-    }
-    /*while(1){
+    while(1){
         int flag = getToken();
         if(flag!=1) break;
     }
-    return 0;*/
+    return 0;
     /*file = fopen("test.txt","rt");
     getNbc();
     char c = fgetc(file);
