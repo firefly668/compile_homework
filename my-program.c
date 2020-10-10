@@ -151,8 +151,8 @@ int getToken(){
 }
 int main(int argc,char** argv){
     init();
-    //file = fopen(argv[1],"rt");
-    file = fopen("test.txt","rt");
+    file = fopen(argv[1],"rt");
+    //file = fopen("test.txt","rt");
     while(1){
         int flag = getToken();
         if(flag!=1) break;
