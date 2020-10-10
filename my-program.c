@@ -72,6 +72,7 @@ int isEqual(){
 }
 void getChar(){
     c=fgetc(file);
+    if(c==EOF) isEOF=1;
 }
 void unGetCh(){
     fseek(file,-1,SEEK_CUR);
@@ -133,13 +134,14 @@ int getToken(){
         error();
         return 0;
     }
+    else if(isEOF==1) return 0;
     if(resultValue){
         printf("%s\n",RW[resultValue].outForm);
     }
     else if(symbol==1){
         printf("Int(%d)\n",num);
     }
-    else if(isEOF!=1){
+    else{
         printf("Ident(%s)\n",token);
     }
     if(isEOF){
