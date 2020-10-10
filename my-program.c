@@ -72,7 +72,6 @@ int isEqual(){
 }
 void getChar(){
     c=fgetc(file);
-    if(c==EOF) isEOF=1;
 }
 void unGetCh(){
     fseek(file,-1,SEEK_CUR);
