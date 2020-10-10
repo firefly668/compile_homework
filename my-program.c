@@ -13,6 +13,7 @@ reservedWord RW[15];
 int symbol=0;
 int num=0;
 int resultValue=0;
+int isEOF=0;
 void init(){
     strcpy(RW[1].token,"BEGIN");
     strcpy(RW[2].token,"END");
@@ -71,6 +72,7 @@ int isEqual(){
 }
 void getChar(){
     c=fgetc(file);
+    if(c==EOF) isEOF=1;
 }
 void unGetCh(){
     fseek(file,-1,SEEK_CUR);
@@ -84,7 +86,9 @@ void cat(){
 }
 int reserve(){
     for(int i=1;i<=6;i++)
-        if(strcmp(RW[i].token,token)) return i;
+        if(strcmp(RW[i].token,token)==0) {
+            return i;
+        }
     return 0;
 }
 void error(){
@@ -132,20 +136,37 @@ int getToken(){
     if(resultValue){
         printf("%s\n",RW[resultValue].outForm);
     }
-    else if(symbol=1){
+    else if(symbol==1){
         printf("Int(%d)\n",num);
     }
     else{
         printf("Ident(%s)\n",token);
     }
-    return 1;
+    if(isEOF){
+        return 0;
+    }
+    else{
+        return 1;
+    }
 }
 int main(int argc,char** argv){
     init();
-    file = fopen(argv[1],"rt");
+    //file = fopen(argv[1],"rt");
+    file = fopen("test.txt","rt");
     while(1){
         int flag = getToken();
         if(flag!=1) break;
     }
     return 0;
+    /*file = fopen("test.txt","rt");
+    getNbc();
+    char c = fgetc(file);
+    printf("%c\n",c);
+    //fseek(file,-1,SEEK_CUR);
+    c = fgetc(file);
+    printf("%d\n",c);
+    getNbc();
+    c = fgetc(file);
+    printf("%d\n",c);
+    return 0;*/
 } 
