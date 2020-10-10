@@ -72,15 +72,15 @@ int isEqual(){
 void getChar(){
     c=fgetc(file);
 }
+void unGetCh(){
+    fseek(file,-1,SEEK_CUR);
+}
 void getNbc(){
     while(isspace(c=fgetc(file)));
     unGetCh();
 }
 void cat(){
-    token[len(token)]=c;
-}
-void unGetCh(){
-    fseek(file,-1,SEEK_CUR);
+    token[strlen(token)]=c;
 }
 int reserve(){
     for(int i=1;i<=6;i++)
