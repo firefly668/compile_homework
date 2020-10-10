@@ -153,11 +153,11 @@ int getToken(){
 }
 int main(int argc,char** argv){
     init();
-    file = fopen(argv[1],"rt");
-    //file = fopen("test.txt","rt");
+    //file = fopen(argv[1],"rt");
+    file = fopen("test.txt","rt");
 
     while((c = fgetc(file))!=EOF){
-        printf("%c\n",c);
+        printf("%c",c);
     }
     /*while(1){
         int flag = getToken();
