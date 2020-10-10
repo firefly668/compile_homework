@@ -91,6 +91,9 @@ void error(){
     printf("Unknown\n");
 }
 int getToken(){
+    resultValue=0;
+    symbol=0;
+    memset(token,0,sizeof(token));
     getNbc();
     getChar();
     if(isalpha(c)){
