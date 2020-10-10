@@ -125,7 +125,10 @@ int getToken(){
     else if(isComma()) resultValue=10;
     else if(isLParenthesis()) resultValue=11;
     else if(isRParenthesis()) resultValue=12;
-    else error();
+    else {
+        error();
+        return 0;
+    }
     if(resultValue){
         printf("%s\n",RW[resultValue].outForm);
     }
@@ -135,8 +138,10 @@ int getToken(){
     else{
         printf("Ident(%s)\n",token);
     }
+    return 1;
 }
 int main(int argc,char** argv){
+    init();
     file = fopen(argv[1],"rt");
     while(1){
         int flag = getToken();
