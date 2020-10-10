@@ -155,9 +155,9 @@ int main(int argc,char** argv){
     init();
     file = fopen(argv[1],"rt");
     //file = fopen("test.txt","rt");
-    char line[1280];
-    while(fgets(line,1279,file)!=EOF){
-        printf("%s\n",line);
+
+    while((c = fgetc(file))!=EOF){
+        printf("%c\n",c);
     }
     /*while(1){
         int flag = getToken();
