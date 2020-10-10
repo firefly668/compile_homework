@@ -79,6 +79,7 @@ void unGetCh(){
 }
 void getNbc(){
     while(isspace(c=fgetc(file)));
+    if(c==EOF) isEOF=1;
     unGetCh();
 }
 void cat(){
@@ -129,7 +130,7 @@ int getToken(){
     else if(isComma()) resultValue=10;
     else if(isLParenthesis()) resultValue=11;
     else if(isRParenthesis()) resultValue=12;
-    else {
+    else if(!isspace(c)){
         error();
         return 0;
     }
@@ -139,7 +140,7 @@ int getToken(){
     else if(symbol==1){
         printf("Int(%d)\n",num);
     }
-    else{
+    else if(isEOF!=1){
         printf("Ident(%s)\n",token);
     }
     if(isEOF){
@@ -163,8 +164,6 @@ int main(int argc,char** argv){
     char c = fgetc(file);
     printf("%c\n",c);
     //fseek(file,-1,SEEK_CUR);
-    c = fgetc(file);
-    printf("%d\n",c);
     getNbc();
     c = fgetc(file);
     printf("%d\n",c);
