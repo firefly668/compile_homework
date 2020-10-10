@@ -155,11 +155,15 @@ int main(int argc,char** argv){
     init();
     file = fopen(argv[1],"rt");
     //file = fopen("test.txt","rt");
-    while(1){
+    char line[1280];
+    while(fgets(line,1279,file)!=EOF){
+        printf("%s\n",line);
+    }
+    /*while(1){
         int flag = getToken();
         if(flag!=1) break;
     }
-    return 0;
+    return 0;*/
     /*file = fopen("test.txt","rt");
     getNbc();
     char c = fgetc(file);
